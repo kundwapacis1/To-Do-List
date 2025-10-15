@@ -1,34 +1,36 @@
-// SELECT ELEMENTS
+// Select elements
 const input = document.getElementById("taskInput");
 const addBtn = document.getElementById("addBtn");
 const taskList = document.getElementById("taskList");
 
-// STORE TASKS IN ARRAY
+// Store tasks in array
 let tasks = [];
 
-//ADD BUTTON CLICK EVENT
+// Add button click event
 addBtn.addEventListener("click", addTask);
 
-// FUNCTION TO ADD TASK
+// Function to add task
 function addTask() {
-    const taskText = input.Value.trim();
-    if (taskText !== ""){
-        alert("please enter a task");
-        return;
-    }
-    // ADD TO ARRAY
-    tasks.push(taskText);
+  const taskText = input.value.trim();
 
-    //CREATE LIST <LI> AND ADD TO LIST
+  if (taskText === "") {
+    alert("Please enter a task!");
+    return;
+  }
 
-    const li = document.createElement("li");
-    li.textContent =taskText;
+  // Add to array
+  tasks.push(taskText);
 
-    //REMOVE TASK WHEN CLICKED
-    li.addEventListener("click", function(){
-        li.remove();
-        tasks = tasks.filter(t => t !== taskText);
-    });
-    taskList.appendChild(li);
-    input.value = ""
+  // Create <li> and add to list
+  const li = document.createElement("li");
+  li.textContent = taskText;
+
+  // Remove task when clicked
+  li.addEventListener("click", function() {
+    li.remove();
+    tasks = tasks.filter(t => t !== taskText); // remove from array
+  });
+
+  taskList.appendChild(li);
+  input.value = "";
 }
